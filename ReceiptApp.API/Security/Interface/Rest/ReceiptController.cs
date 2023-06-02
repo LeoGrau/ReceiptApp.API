@@ -5,6 +5,7 @@ using ReceiptApp.API.Security.Domain.Models;
 using ReceiptApp.API.Security.Domain.Services;
 using ReceiptApp.API.Security.Resources.Create;
 using ReceiptApp.API.Security.Resources.Show;
+using ReceiptApp.API.Security.Resources.Update;
 using ReceiptApp.API.Security.Services;
 using ReceiptApp.API.Shared.Domain.Repository;
 using Swashbuckle.AspNetCore.Annotations;
@@ -70,6 +71,17 @@ public class ReceiptController : ControllerBase
         if (!result.Success)
             return BadRequest(result.Message);
         return Ok(new { message = "Successfully deleted."});
+    }
+    
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateReceipt(Guid id, [FromBody, SwaggerRequestBody("")] UpdateReceiptResource updateReceiptResource)
+    {
+        var mappedReceipt = _mapper.Map<UpdateReceiptResource, Receipt>(updateReceiptResource);
+        var result = await _receiptService.UpdateAsync(id, mappedReceipt);
+        if (!result.Success)
+            return BadRequest(result.Message);
+        var showResultReceipt = _mapper.Map<Receipt, ReceiptResource>(result.Resource!);
+        return Ok(showResultReceipt);
     }
 
 }

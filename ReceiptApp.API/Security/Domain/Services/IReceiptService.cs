@@ -10,4 +10,5 @@ public interface IReceiptService
     Task<ReceiptResponse> FindAsync(Guid id);
     Task<ReceiptResponse> AddAsync(Receipt receipt);
     Task<ReceiptResponse> Remove(Guid id);
+    Task<ReceiptResponse> UpdateAsync(Guid id, Receipt updatedReceipt);
 }

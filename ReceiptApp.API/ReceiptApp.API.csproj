@@ -33,7 +33,6 @@
       <Folder Include="ReceiptApp\Repositories\" />
       <Folder Include="ReceiptApp\Resources\" />
       <Folder Include="ReceiptApp\Services\" />
-      <Folder Include="Security\Resources\Update\" />
     </ItemGroup>
 
 </Project>

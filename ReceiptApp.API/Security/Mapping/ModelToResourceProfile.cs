@@ -8,7 +8,12 @@ public class ModelToResourceProfile: Profile
 {
     public ModelToResourceProfile()
     {
-        CreateMap<Receipt, ReceiptResource>();
+        CreateMap<Receipt, ReceiptResource>()
+            .ForMember(resource => resource.DocumentType, expression => 
+                expression.MapFrom(receipt => receipt.DocumentType.ToString()))
+            .ForMember(resource => resource.Currency, expression => 
+                expression.MapFrom(receipt => receipt.Currency.ToString()));
+        
         CreateMap<User, AuthResource>();
     }
 }

@@ -1,18 +1,15 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using ReceiptApp.API.Shared.Domain.Enum;
 
-namespace ReceiptApp.API.Security.Resources.Show;
+namespace ReceiptApp.API.Security.Resources.Update;
 
-public class ReceiptResource
+public class UpdateReceiptResource
 {
-    public Guid Id { get; set; }
     public string? LogoImageUrl { get; set; }
     public float Amount { get; set; }
     public string? Title { get; set; }
     public string? Description { get; set; }
     public string? Address { get; set; }
     public long IdentificationNumber { get; set; }
-
-    public string? Currency { get; set; }
-    public string? DocumentType { get; set; }
+    public Currencies Currency { get; set; }
+    public DocumentTypes DocumentType { get; set; }
 }

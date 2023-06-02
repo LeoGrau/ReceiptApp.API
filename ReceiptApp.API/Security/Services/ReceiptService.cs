@@ -66,4 +66,24 @@ public class ReceiptService : IReceiptService
             return new ReceiptResponse($"{exception.Message}");
         }
     }
+
+    public async Task<ReceiptResponse> UpdateAsync(Guid id, Receipt updatedReceipt)
+    {
+        var existingReceipt = await _receiptRepository.FindAsync(id);
+        if (existingReceipt == null)
+            return new ReceiptResponse("Receipt does not exist");
+        
+        existingReceipt.UpdateReceipt(updatedReceipt);
+
+        try
+        {
+            _receiptRepository.Update(existingReceipt);
+            await _unitOfWork.CompleteAsync();
+            return new ReceiptResponse(existingReceipt);
+        }
+        catch (Exception e)
+        {
+            return new ReceiptResponse(e.Message);
+        }
+    }
 }
