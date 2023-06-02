@@ -23,6 +23,11 @@ public class ReceiptService : IReceiptService
         return await _receiptRepository.ListAsync();
     }
 
+    public async Task<IEnumerable<Receipt>> ListByUserIdAsync(Guid userId)
+    {
+        return await _receiptRepository.ListByUserIdAsync(userId);
+    }
+
     public async Task<ReceiptResponse> FindAsync(Guid id)
     {
         var existingReceipt = await _receiptRepository.FindAsync(id);

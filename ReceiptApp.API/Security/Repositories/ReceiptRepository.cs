@@ -16,4 +16,9 @@ public class ReceiptRepository : BaseRepository<Receipt, Guid>, IReceiptReposito
     {
         return await _dbSet.ToListAsync();
     }
+    
+    public async Task<IEnumerable<Receipt>> ListByUserIdAsync(Guid userId)
+    {
+        return await _dbSet.Where(receipt => receipt.UserId == userId).ToListAsync();
+    }
 }

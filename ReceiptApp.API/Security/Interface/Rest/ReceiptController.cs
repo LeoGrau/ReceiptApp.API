@@ -55,6 +55,14 @@ public class ReceiptController : ControllerBase
         return Ok(showResultReceipt);
     }
 
+    [HttpGet("user/{userId}")]
+    public async Task<IEnumerable<ReceiptResource>> GetReceiptsByUserId(Guid userId)
+    {
+        var receipts = await _receiptService.ListByUserIdAsync(userId);
+        var mappedReceipts = _mapper.Map<IEnumerable<Receipt>, IEnumerable<ReceiptResource>>(receipts);
+        return mappedReceipts;
+    }
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteReceipt(Guid id)
     {

@@ -117,6 +117,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 
+// Use CORS Service
+app.UseCors(policyBuilder => 
+    policyBuilder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

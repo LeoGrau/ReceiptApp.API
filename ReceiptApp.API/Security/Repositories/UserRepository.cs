@@ -16,4 +16,9 @@ public class UserRepository : BaseRepository<User, Guid>, IUserRepository
     {
         return await _dbSet.ToListAsync();
     }
+
+    public async Task<User?> FindByUsername(string username)
+    {
+        return await _dbSet.FirstOrDefaultAsync(user => user.Username == username);
+    }
 }

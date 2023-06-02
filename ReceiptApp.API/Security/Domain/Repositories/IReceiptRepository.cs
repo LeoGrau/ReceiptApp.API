@@ -7,4 +7,5 @@ namespace ReceiptApp.API.Security.Domain.Repositories;
 public interface IReceiptRepository : IBaseRepository<Receipt, Guid>
 {
     Task<IEnumerable<Receipt>> ListAsync();
+    Task<IEnumerable<Receipt>> ListByUserIdAsync(Guid userId);
 }

@@ -25,6 +25,8 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<User>().Property(user => user.Username).IsRequired();
         modelBuilder.Entity<User>().Property(user => user.HashedPassword).IsRequired();
         modelBuilder.Entity<User>().Property(user => user.Description);
+        modelBuilder.Entity<User>().Property(user => user.Firstname);
+        modelBuilder.Entity<User>().Property(user => user.Lastname);
         
         // Receipts
         modelBuilder.Entity<Receipt>().ToTable("Receipts");

@@ -9,5 +9,6 @@ public class ModelToResourceProfile: Profile
     public ModelToResourceProfile()
     {
         CreateMap<Receipt, ReceiptResource>();
+        CreateMap<User, AuthResource>();
     }
 }
