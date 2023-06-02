@@ -43,7 +43,7 @@ public class UserService : IUserService
     public async Task RegisterAsync(RegisterRequest registerRequest)
     {
         var existingUserWithUsername = await _userRepository.FindByUsername(registerRequest.Username!);
-        if (existingUserWithUsername == null)
+        if (existingUserWithUsername != null)
             throw new AppException("User with that username already exists!");
 
         // Map Request to User
