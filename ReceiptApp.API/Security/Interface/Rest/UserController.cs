@@ -1,4 +1,6 @@
+using System.Net.Mime;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ReceiptApp.API.Security.Domain.Models;
 using ReceiptApp.API.Security.Domain.Services;
@@ -10,6 +12,9 @@ namespace ReceiptApp.API.Security.Interface.Rest;
 
 [ApiController]
 [Route("/api/v0/[controller]")]
+[Produces(MediaTypeNames.Application.Json)]
+[SwaggerTag("CRUD for Users")]
+[EnableCors]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;

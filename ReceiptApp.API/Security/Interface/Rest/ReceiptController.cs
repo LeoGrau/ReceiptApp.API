@@ -1,5 +1,6 @@
 using System.Net.Mime;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ReceiptApp.API.Security.Domain.Models;
 using ReceiptApp.API.Security.Domain.Services;
@@ -16,6 +17,7 @@ namespace ReceiptApp.API.Security.Interface.Rest;
 [Route("/api/v0/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
 [SwaggerTag("CRUD for Receipts")]
+[EnableCors]
 public class ReceiptController : ControllerBase
 {
     private readonly IMapper _mapper;
